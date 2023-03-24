@@ -18,8 +18,6 @@ function App() {
     } catch (error) {
       setLoading(false);
     }
-
-    debugger;
   }
   useEffect(() => {
     fetchCourses();

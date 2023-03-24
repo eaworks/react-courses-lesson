@@ -1,6 +1,18 @@
+import Course from "./Course";
+
 function Courses({ courses }) {
-    console.log(courses)
-    return <div></div>;
+
+    return <div>
+        <div><h2>Kurslarim</h2></div>
+        <div >
+            {
+                courses.map((course) => {
+                    return (<Course key={course.id} {...course} />)
+                })
+            }
+        </div>
+
+    </div>;
 }
 
 export default Courses;
