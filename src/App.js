@@ -3,13 +3,22 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './App.css';
 import Courses from './Courses';
+import Loading from './Loading';
 
 
 function App() {
   const [courses, setCourses] = useState()
+  const [loading, setLoading] = useState(true)
   const fetchCourses = async () => {
-    const response = await axios.get('http://localhost:3000/courses');
-    setCourses(response.data)
+    setLoading(true);
+    try {
+      const response = await axios.get('http://localhost:3000/courses');
+      setCourses(response.data);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+
     debugger;
   }
   useEffect(() => {
@@ -18,7 +27,8 @@ function App() {
 
   return (
     <div className="App">
-      <Courses courses={courses} />
+      {loading ? (<Loading />) : (<Courses courses={courses} />)}
+
     </div>
   );
 }
