@@ -2,9 +2,9 @@ import Course from "./Course";
 
 function Courses({ courses, removeCourse }) {
 
-    return <div>
+    return <div className="courseMainDiv">
         <div><h2>Kurslarim</h2></div>
-        <div >
+        <div className="cardDiv" >
             {
                 courses.map((course) => {
                     return (<Course key={course.id} {...course} removeOneCourse={removeCourse} />)
